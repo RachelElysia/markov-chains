@@ -54,10 +54,9 @@ def make_chains(text_string):
 
     return chains
 
-def make_text(chains):
-    """Return text from chains.
-    Input two word string, finds key with 2 words, chooses random 3rd work and
-    continues the process until it breaks.
+def generate_markov_chain(chains):
+    """Input a bigram dictionary chooses a value to add to the bigram and
+    rinse and repeat until it breaks using a while loop.
     """
 
     # Create vatiable that choose a key at random
@@ -85,7 +84,6 @@ def make_text(chains):
     # new_key = ( , random(chains.keys()))
 
 # Take our list of words, and create a long string with spaces between the words
-    print(' '.join(all_words))
     return ' '.join(all_words)
 
 
@@ -100,4 +98,4 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 
 # Produce random text
-random_text = make_text(chains)
+generate_markov_chain = make_text(chains)
