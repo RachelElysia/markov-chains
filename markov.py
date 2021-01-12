@@ -84,12 +84,13 @@ def generate_markov_chain(chains):
     # new_key = ( , random(chains.keys()))
 
 # Take our list of words, and create a long string with spaces between the words
+    print(' '.join(all_words))
     return ' '.join(all_words)
 
 
 
 
-input_path = 'gettysburg.txt'
+input_path = 'green-eggs.txt'
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
@@ -98,4 +99,4 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 
 # Produce random text
-generate_markov_chain = make_text(chains)
+generate_markov_chain = generate_markov_chain(chains)
