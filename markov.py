@@ -16,8 +16,6 @@ def open_and_read_file(file_path):
 
     return contents
 
-#print(open_and_read_file('green-eggs.txt'))
-
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
 
@@ -67,16 +65,16 @@ def make_text(chains):
     all_words = []
 
     start_words = choice(list(chains.keys()))
-    start_words_list = list(start_words)
     all_words.extend(start_words)
 
-    #add a random word from values to the tuple
+    # Add a random word from values to the tuple
     third_word = choice(chains[start_words])
     all_words.append(third_word)
-    print(all_words)
 
-
-
+    # Look up last two words in all_words as key in chains
+    while (all_words[-2], all_words[-1]) in chains.keys():
+        # Append a random value of the chain with the key of the last two words
+        all_words.append(choice(chains[all_words[-2], all_words[-1]]))
 
     # # Use FOR loop to select index 1 from dictionary key
     # for idx, word in chains:
@@ -86,13 +84,14 @@ def make_text(chains):
     # # Append index 1 and random value word to words list
     # new_key = ( , random(chains.keys()))
 
-    # return ' '.join(words)
+# Take our list of words, and create a long string with spaces between the words
+    print(' '.join(all_words))
+    return ' '.join(all_words)
 
-#GOAL:
-make_text(make_chains(open_and_read_file('green-eggs.txt')))
 
 
-input_path = 'green-eggs.txt'
+
+input_path = 'gettysburg.txt'
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
